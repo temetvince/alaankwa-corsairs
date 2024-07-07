@@ -5,15 +5,15 @@
  * @param registry The registry containing the entities
  * @param delta The time since the last frame
  */
-void updateSprites(entt::registry& registry, float delta) {
-    auto view = registry.view<position, sprite>();
+void updateSprites(entt::registry &registry, float delta) {
+  auto view = registry.view<position, sprite>();
 
-    for (auto entity : view) {
-        auto& pos = view.get<position>(entity);
-        auto& spr = view.get<sprite>(entity);
+  for (auto entity : view) {
+    auto &pos = view.get<position>(entity);
+    auto &spr = view.get<sprite>(entity);
 
-        DrawCircle(pos.x, pos.y, 10, spr.color);
-    }
+    DrawCircle(pos.x, pos.y, 10, spr.color);
+  }
 }
 
 /**
@@ -21,16 +21,16 @@ void updateSprites(entt::registry& registry, float delta) {
  * @param registry The registry containing the entities
  * @param delta The time since the last frame
  */
-void updatePositions(entt::registry& registry, float delta) {
-    auto view = registry.view<position, velocity>();
+void updatePositions(entt::registry &registry, float delta) {
+  auto view = registry.view<position, velocity>();
 
-    for (auto entity : view) {
-        auto& pos = view.get<position>(entity);
-        auto& vel = view.get<velocity>(entity);
+  for (auto entity : view) {
+    auto &pos = view.get<position>(entity);
+    auto &vel = view.get<velocity>(entity);
 
-        pos.x = pos.x + vel.dx * delta;
-        pos.y = pos.y + vel.dy * delta;
-    }
+    pos.x = pos.x + vel.dx * delta;
+    pos.y = pos.y + vel.dy * delta;
+  }
 }
 
 /**
@@ -39,25 +39,25 @@ void updatePositions(entt::registry& registry, float delta) {
  * @param delta The time since the last update.
  */
 void update(entt::registry &registry, float delta) {
-    auto view = registry.view<const position, velocity>();
+  auto view = registry.view<const position, velocity>();
 
-    // use a callback
-    view.each([](const auto &pos, auto &vel) { /* ... */ });
+  // use a callback
+  view.each([](const auto &pos, auto &vel) { /* ... */ });
 
-    // use an extended callback
-    view.each([](const auto entity, const auto &pos, auto &vel) { /* ... */ });
+  // use an extended callback
+  view.each([](const auto entity, const auto &pos, auto &vel) { /* ... */ });
 
-    // use a range-for
-    for(auto [entity, pos, vel]: view.each()) {
-        // ...
-    }
+  // use a range-for
+  for (auto [entity, pos, vel] : view.each()) {
+    // ...
+  }
 
-    // use forward iterators and get only the components of interest
-    for(auto entity: view) {
-        auto &vel = view.get<velocity>(entity);
-        // ...
-    }
+  // use forward iterators and get only the components of interest
+  for (auto entity : view) {
+    auto &vel = view.get<velocity>(entity);
+    // ...
+  }
 
-    updatePositions(registry, delta);
-    updateSprites(registry, delta);
+  updatePositions(registry, delta);
+  updateSprites(registry, delta);
 }

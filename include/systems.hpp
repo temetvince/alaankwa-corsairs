@@ -11,6 +11,6 @@
  * @param registry The entity registry.
  * @param delta The time since the last update.
  */
-void update(entt::registry& registry, float delta);
+void update(entt::registry &registry, float delta);
 
 #endif // SYSTEMS_HPP

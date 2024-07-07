@@ -59,3 +59,18 @@ endif()
 if (APPLE)
   target_link_libraries(${PROJECT_NAME} PRIVATE "-framework IOKit" "-framework Cocoa" "-framework OpenGL")
 endif()
+
+# Add Clang-Format target
+file(GLOB_RECURSE ALL_SOURCE_FILES ${CMAKE_SOURCE_DIR}/src/*.cpp ${CMAKE_SOURCE_DIR}/src/*.hpp ${CMAKE_SOURCE_DIR}/include/*.hpp)
+add_custom_target(format
+    COMMAND clang-format -i ${ALL_SOURCE_FILES}
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMENT "Running clang-format"
+)
+
+# Add Clang-Format check target
+add_custom_target(check-format
+    COMMAND clang-format -output-replacements-xml ${ALL_SOURCE_FILES} | grep "<replacement " && echo "Code is not formatted properly" && exit 1 || echo "Code is formatted properly"
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMENT "Checking format with clang-format"
+)

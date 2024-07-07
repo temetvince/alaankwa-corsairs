@@ -1,4 +1,4 @@
 # Builds the project and runs it
 cmake ../CMakeLists.txt
-cmake --build .
+cmake --build . --target format
 ./main
