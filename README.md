@@ -2,7 +2,8 @@
 
 ## Running the project
 
-Requires an internet connection the first time to download RayLib.
+Requires CMake & clang-format.
+Requires an internet connection the first run to download dependencies.
 
 ```bash
 cd build
