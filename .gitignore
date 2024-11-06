@@ -8,10 +8,8 @@ Thumbs.db
 # Main file
 main
 
-# Build directory except run files
-build/*
-!build/run.sh
-!build/run.bat
+# Build directory
+build
 
 # Prerequisites
 *.d

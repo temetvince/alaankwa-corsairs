@@ -1,0 +1,17 @@
+CompileFlags:
+    Add: [-Iinclude]
+    CompilationDatabasePath: build
+
+Diagnostics:
+    ClangTidy:
+        Path: configs/.clang-tidy
+        HeaderFilterRegex: 'src/.*', 'include/.'
+    ClangFormatStyle:
+        Path: configs/.clang-format
+
+Index:
+    FilesExclude:
+        - build/
+    
+Completion:
+    AllScopes: true
