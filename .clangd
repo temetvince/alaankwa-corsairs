@@ -4,10 +4,10 @@ CompileFlags:
 
 Diagnostics:
     ClangTidy:
-        Path: configs/.clang-tidy
-        HeaderFilterRegex: 'src/.*', 'include/.'
+        Path: .clang-tidy
+        HeaderFilterRegex: 'src/.*', 'include/.*'
     ClangFormatStyle:
-        Path: configs/.clang-format
+        Path: .clang-format
 
 Index:
     FilesExclude:
