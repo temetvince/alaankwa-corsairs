@@ -12,7 +12,7 @@ void updateSprites(entt::registry &registry, float delta) {
     auto &pos = view.get<position>(entity);
     auto &spr = view.get<sprite>(entity);
 
-    DrawCircle(pos.x, pos.y, 10, spr.color);
+    DrawCircle(pos.x, pos.y, spr.width, spr.color);
   }
 }
 

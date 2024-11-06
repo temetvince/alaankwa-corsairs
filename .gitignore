@@ -2,12 +2,16 @@
 .DS_Store
 Thumbs.db
 
+# Editor files
+.vscode
+
 # Main file
 main
 
-# Build directory except run.sh
+# Build directory except run files
 build/*
 !build/run.sh
+!build/run.bat
 
 # Prerequisites
 *.d

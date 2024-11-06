@@ -24,6 +24,7 @@ struct velocity {
  */
 struct sprite {
   Color color; /**< The color of the sprite. */
+  int width;   /**< The width of the sprite. */
 };
 
 // You can add more components here as needed

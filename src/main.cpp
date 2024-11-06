@@ -15,31 +15,23 @@
 int main(int argc, char **argv) {
   entt::registry registry;
 
-  // Create 10 entities with a position component and a velocity component for
-  // every even entity
-  for (auto i = 0u; i < 10u; ++i) {
-    const auto entity = registry.create();
-    registry.emplace<position>(entity, i * 1.f, i * 1.f);
-    if (i % 2 == 0) {
-      registry.emplace<velocity>(entity, i * 1.0f, i * 1.0f);
-    }
-  }
+  // Create an entity with a position component
+  auto entity = registry.create();
+  registry.emplace<position>(entity, 100.0f, 100.0f);
+  registry.emplace<sprite>(entity, RED, 3);
 
-  // For each entity with a position component, add a sprite component
-  registry.view<position>().each(
-      [&registry](const auto entity, const auto &pos) {
-        registry.emplace<sprite>(entity, RED);
-      });
+  // Create a Sun
+  auto sun = registry.create();
+  registry.emplace<position>(sun, 400.0f, 225.0f);
+  registry.emplace<sprite>(sun, YELLOW, 10);
 
-  InitWindow(800, 450, "raylib [core] example - basic window");
+  InitWindow(800, 800, "Alaankwa Corsairs");
 
   while (!WindowShouldClose()) {
     auto delta = GetFrameTime();
-    std::cout << delta << std::endl;
+
     BeginDrawing();
-    ClearBackground(RAYWHITE);
-    DrawText("Congrats! You created your first window!", 190, 200, 20,
-             LIGHTGRAY);
+    ClearBackground(BLACK);
     EndDrawing();
 
     update(registry, delta);
