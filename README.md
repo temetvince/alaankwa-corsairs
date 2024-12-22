@@ -2,10 +2,10 @@
 
 ## Running the project
 
-Requires CMake & clang-format.
+Requires CMake & LLVM with tools like clang-format & scan-build.
 Requires an internet connection the first run to download dependencies.
 
 ```bash
-cd build
+chmod +x run.sh
 ./run.sh
 ```

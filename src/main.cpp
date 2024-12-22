@@ -12,20 +12,32 @@
  * @param argv The command-line arguments.
  * @return The exit status of the program.
  */
-int main(int argc, char **argv) {
+auto main(int argc, char **argv) -> int {
   entt::registry registry;
 
-  // Create an entity with a position component
-  auto entity = registry.create();
-  registry.emplace<position>(entity, 100.0f, 100.0f);
-  registry.emplace<sprite>(entity, RED, 3);
+  // Create a planet
+  const auto entity = registry.create();
+  const auto plantetPositionX = 100.0F;
+  const auto plantetPositionY = 100.0F;
+  const auto planetColor = RED;
+  const auto planetWidth = 3;
+  registry.emplace<position>(entity, plantetPositionX, plantetPositionY);
+  registry.emplace<sprite>(entity, planetColor, planetWidth);
 
-  // Create a Sun
-  auto sun = registry.create();
-  registry.emplace<position>(sun, 400.0f, 225.0f);
-  registry.emplace<sprite>(sun, YELLOW, 10);
+  // Create a sun
+  const auto sun = registry.create();
+  const auto sunPositionX = 400.0F;
+  const auto sunPositionY = 225.0F;
+  const auto sunColor = YELLOW;
+  const auto sunWidth = 10;
+  registry.emplace<position>(sun, sunPositionX, sunPositionY);
+  registry.emplace<sprite>(sun, sunColor, sunWidth);
 
-  InitWindow(800, 800, "Alaankwa Corsairs");
+  // Initialize the window
+  const auto screenWidth = 800;
+  const auto screenHeight = 800;
+  const auto *const screenTitle = "Alaankwa Corsairs";
+  InitWindow(screenWidth, screenHeight, screenTitle);
 
   while (!WindowShouldClose()) {
     auto delta = GetFrameTime();
